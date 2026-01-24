@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-yellow-900/98 shadow-lg' : 'bg-yellow-900-50/95 backdrop-blur-sm'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-yellow-900/98 shadow-lg' : 'bg-transparent backdrop-blur-sm'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             <div className="flex-shrink-0">
@@ -54,7 +54,7 @@ export default function Home() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className={`capitalize text-white  px-3 py-2 text-sm font-medium transition-colors relative ${
+                    className={`capitalize text-yellow-600/95  px-3 py-2 text-sm font-medium transition-colors relative ${
                       activeSection === item ? 'text-white' : ''
                     }`}
                   >
@@ -122,7 +122,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 mb-10">
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-10 py-4 bg-red-300 text-yellow-900 rounded-full font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all text-lg"
+                className="px-10 py-4 bg-yellow-900 text-white rounded-full font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all text-lg"
               >
                 Get In Touch
               </button>
@@ -316,7 +316,7 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="flex gap-6">
-                    <a href="#" className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
+                    <a href="https://amazonprojnes.netlify.app/" className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
                       <FaExternalLinkAlt className="w-5 h-5" />
                       Live Demo
                     </a>
@@ -341,12 +341,13 @@ export default function Home() {
             {[
               {
                 name: 'Anawar Fashion Tailor',
-                img: '/logo1.png'
+                img: '/logo1.png',
+                link:'https://ana.fashion.yegofi.com/manager'
               },
             ].map(({ name, img }) => (
               <div key={name} className="flex flex-col items-center justify-center p-2 ">
-                <img src={img} alt={name} className="w-24 h-24 text-yellow-900 border-yellow-900 border-1 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all rounded-full mb-4" />
-                <span className="text-sm font-semibold text-yellow-900 text-center">{name}</span>
+                <img src={img} alt={name}  className="w-24 h-24 text-yellow-900 border-yellow-900 border-1 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all rounded-full mb-4" />
+                <span className="text-sm font-semibold text-yellow-900 text-center">{name} </span>
               </div>
             ))}
           </div>
