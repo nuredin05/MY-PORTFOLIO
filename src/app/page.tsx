@@ -1,8 +1,6 @@
 'use client';
-import image from 'next/image';
-
 import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaNodeJs, FaPython, FaGitAlt,  FaFigma, FaExternalLinkAlt, FaServer, FaDatabase, FaCode, FaTerminal, FaMapMarkerAlt, FaPhone, FaInstagram} from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaHtml5, FaCss3Alt, FaJs, FaReact, FaVuejs, FaNodeJs, FaPython, FaGitAlt, FaFigma, FaExternalLinkAlt, FaServer, FaDatabase, FaCode, FaTerminal, FaMapMarkerAlt, FaPhone, FaInstagram } from 'react-icons/fa';
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -11,7 +9,7 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100);
-      
+
       // Update active section
       const sections = ['home', 'about', 'skills', 'partners', 'projects', 'contact'];
       const current = sections.find(section => {
@@ -46,7 +44,7 @@ export default function Home() {
             <div className="flex-shrink-0">
               <img className="w-20 h-10 text-yellow-900" src="/logo_n.png" alt="NE"></img>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
@@ -54,9 +52,8 @@ export default function Home() {
                   <button
                     key={item}
                     onClick={() => scrollToSection(item)}
-                    className={`capitalize text-yellow-600/95  px-3 py-2 text-sm font-medium transition-colors relative ${
-                      activeSection === item ? 'text-white' : ''
-                    }`}
+                    className={`capitalize text-yellow-600/95  px-3 py-2 text-sm font-medium transition-colors relative ${activeSection === item ? 'text-white' : ''
+                      }`}
                   >
                     {item}
                     {activeSection === item && (
@@ -103,13 +100,13 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center relative overflow-hidden bg-white" >
         <div className="absolute inset-0">
-                <img 
-                  src="/bg.jpg" 
-                  alt="Nuru Endris" 
-                  className="w-full h-full object-cover opacity-20"
-                />
+          <img
+            src="/bg.jpg"
+            alt="Nuru Endris"
+            className="w-full h-full object-cover opacity-20"
+          />
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
           <div className="text-yellow-900">
             <h1 className="text-4xl lg:text-7xl font-bold leading-tight mb-6">
@@ -151,13 +148,13 @@ export default function Home() {
               ))}
             </div>
           </div>
-          
+
           <div className="flex justify-center">
             <div className="relative">
               <div className="w-80 h-80 lg:w-96 lg:h-96 bg-transparent rounded-full flex items-center justify-center border-4 border-yellow-900/50 animate-float shadow-2xl">
-                <img 
-                  src="/me.jpg" 
-                  alt="Nuru Endris" 
+                <img
+                  src="/me.jpg"
+                  alt="Nuru Endris"
                   className="w-72 h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-yellow-900/30"
                 />
               </div>
@@ -261,46 +258,66 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
               {
-                title: 'Amazon Clone',
-                description: 'A fully functional e-commerce platform with product catalog, shopping cart, user authentication, and payment integration mimicking Amazon\'s core features.',
-                tech: ['React', 'Node.js', 'firebase'],
-                img: '/amazon.png'
-              },
-              {
-                title: 'Netflix Clone',
-                description: 'A streaming platform with movie browsing, search functionality, user profiles, and video playback using TMDB API for real movie data.',
-                tech: ['react', 'TMDB movies', 'firebase'],
-                img: '/netflix.png'
-              },
-              {
-                title: 'Apple Clone',
-                description: 'A modern tech showcase website featuring product displays, interactive galleries, and smooth animations inspired by Apple\'s design language.',
-                tech: ['React', 'Node.js', 'firebase','express'],
-                img: '/apple.png'
-              },
-              {
-                title: 'Portfolio Website',
-                description: 'A responsive portfolio website with smooth animations, project showcase, skills section, and contact form built with modern web technologies.',
-                tech: ['Next.js', 'Tailwind', 'Framer'],
-                img: '/portfolio.png'
-              },
-              {
-                title: 'Evangadi Forum',
-                description: 'A community discussion platform with user authentication, post creation, commenting system, and real-time updates for collaborative learning.',
-                tech: ['react', 'redux', 'mysql'],
-                img: '/evangadi.png'
+                title: 'Amana School System',
+                description: 'A comprehensive school management system designed for Amana Model Secondary School, featuring student records, academic tracking, and administrative tools to revolutionize the educational experience.',
+                tech: ['React', 'Node.js', 'Express', 'MySQL'],
+                img: '/amss.png',
+                demoLink: 'https://amana.yegofi.com/',
+                codeLink: 'https://github.com/nuredin05'
               },
               {
                 title: 'Tailor Shop',
                 description: 'A custom tailoring service platform with appointment booking, measurement tracking, fabric selection, and order management for bespoke clothing.',
                 tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-                img: '/tailor.png'
+                img: '/tailor.png',
+                demoLink: 'https://ana.fashion.yegofi.com',
+                codeLink: 'https://github.com/nuredin05/student_behavior_tracking_system'
+              },
+              {
+                title: 'Portfolio Website',
+                description: 'A responsive portfolio website with smooth animations, project showcase, skills section, and contact form built with modern web technologies.',
+                tech: ['Next.js', 'Tailwind', 'Framer'],
+                img: '/portfolio.png',
+                demoLink: 'https://nuru-portfolio.vercel.app/',
+                codeLink: 'https://github.com/nuredin05/MY-PORTFOLIO'
+              },
+              {
+                title: 'Amazon Clone',
+                description: 'A fully functional e-commerce platform with product catalog, shopping cart, user authentication, and payment integration mimicking Amazon\'s core features.',
+                tech: ['React', 'Node.js', 'firebase'],
+                img: '/amazon.png',
+                demoLink: 'https://amazonprojnes.netlify.app/',
+                codeLink: 'https://github.com/nuredin05/amazon-clone'
+              },
+              {
+                title: 'Netflix Clone',
+                description: 'A streaming platform with movie browsing, search functionality, user profiles, and video playback using TMDB API for real movie data.',
+                tech: ['react', 'TMDB movies', 'firebase'],
+                img: '/netflix.png',
+                demoLink: 'https://my-netflix-clone-nes.netlify.app/',
+                codeLink: 'https://github.com/nuredin05/my-netflix-clone'
+              },
+              {
+                title: 'Apple Clone',
+                description: 'A modern tech showcase website featuring product displays, interactive galleries, and smooth animations inspired by Apple\'s design language.',
+                tech: ['React', 'Node.js', 'firebase', 'express'],
+                img: '/apple.png',
+                demoLink: 'https://apple-clone-nes.netlify.app/',
+                codeLink: 'https://github.com/nuredin05/amazon-clone'
+              },
+              {
+                title: 'Evangadi Forum',
+                description: 'A community discussion platform with user authentication, post creation, commenting system, and real-time updates for collaborative learning.',
+                tech: ['react', 'redux', 'mysql'],
+                img: '/evangadi.png',
+                demoLink: 'https://evangadi-forum-nes.netlify.app/',
+                codeLink: 'https://github.com/nuredin05/evangadi-forum'
               }
-            ].map(({ title, description, tech, img }) => (
+            ].map(({ title, description, tech, img, demoLink, codeLink }) => (
               <div key={title} className="bg-yellow-50 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all border border-yellow-200">
                 <div className="h-36 bg-transparent flex items-center justify-center">
-                  <img 
-                    src={img} 
+                  <img
+                    src={img}
                     alt={title}
                     className="w-full h-30 object-cover"
                   />
@@ -316,11 +333,11 @@ export default function Home() {
                     ))}
                   </div>
                   <div className="flex gap-6">
-                    <a href="https://amazonprojnes.netlify.app/" className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
+                    <a href={demoLink} className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
                       <FaExternalLinkAlt className="w-5 h-5" />
                       Live Demo
                     </a>
-                    <a href="https://github.com/nuredin05" className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
+                    <a href={codeLink} className="flex items-center gap-2 text-yellow-900 hover:text-yellow-700 font-semibold transition-colors">
                       <FaGithub className="w-5 h-5" />
                       Code
                     </a>
@@ -342,13 +359,18 @@ export default function Home() {
               {
                 name: 'Anawar Fashion Tailor',
                 img: '/logo1.png',
-                link:'https://ana.fashion.yegofi.com/manager'
+                link: 'https://ana.fashion.yegofi.com'
               },
-            ].map(({ name, img }) => (
-              <div key={name} className="flex flex-col items-center justify-center p-2 ">
-                <img src={img} alt={name}  className="w-24 h-24 text-yellow-900 border-yellow-900 border-1 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all rounded-full mb-4" />
+              {
+                name: 'Amana Model Secondary School',
+                img: '/amana_logo.png',
+                link: 'https://amana.yegofi.com'
+              },
+            ].map(({ name, img, link }) => (
+              <a key={name} href={link} className="flex flex-col items-center justify-center p-2 ">
+                <img src={img} alt={name} className="w-24 h-24 text-yellow-900 border-yellow-900 border-1 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all rounded-full mb-4" />
                 <span className="text-sm font-semibold text-yellow-900 text-center">{name} </span>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -395,7 +417,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            
+
             <form className="bg-yellow-50 p-10 rounded-3xl shadow-xl border border-yellow-200">
               <div className="space-y-6">
                 <input
@@ -438,7 +460,7 @@ export default function Home() {
       <footer className="bg-black text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xl mb-2"> Copyright © {new Date().getFullYear()} Nuru Endris. All rights reserved.</p>
-          
+
         </div>
       </footer>
 
