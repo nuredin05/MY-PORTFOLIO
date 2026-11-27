@@ -26,7 +26,10 @@ import {
   FaBolt,
   FaBuilding,
   FaSun,
-  FaMoon
+  FaMoon,
+  FaLayerGroup,
+  FaGlobe,
+  FaLock
 } from 'react-icons/fa';
 import {
   SiNextdotjs,
@@ -34,19 +37,23 @@ import {
   SiNodedotjs
 } from 'react-icons/si';
 
+type ProjectCategory = 'fullstack' | 'frontend' | 'ecommerce' | 'clone';
+
 interface Project {
   id: string;
   title: string;
-  category: 'fullstack' | 'ecommerce' | 'clone';
+  subtitle?: string;
+  category: ProjectCategory;
   categoryLabel: string;
   description: string;
   longDescription: string;
   highlights: string[];
   tech: string[];
-  img: string;
-  demoLink: string;
-  codeLink: string;
+  img?: string;
+  demoLink?: string;
+  codeLink?: string;
   featured?: boolean;
+  iconKey?: 'finance' | 'education' | 'makerspace' | 'charity' | 'engineering';
 }
 
 export default function Home() {
@@ -54,7 +61,7 @@ export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [activeProjectFilter, setActiveProjectFilter] = useState<'all' | 'fullstack' | 'ecommerce' | 'clone'>('all');
+  const [activeProjectFilter, setActiveProjectFilter] = useState<'all' | ProjectCategory>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -205,6 +212,96 @@ export default function Home() {
 
   // Projects Data
   const projects: Project[] = [
+    {
+      id: 'medina-united-mfc',
+      title: 'Medina United MFC',
+      subtitle: 'Full-Stack Web Platform & Admin Portal',
+      category: 'fullstack',
+      categoryLabel: 'Full-Stack Web Platform',
+      description: 'Engineered responsive frontend interfaces and backend REST API integrations for financial service workflows, member account management, role-based admin access controls, and real-time operational reporting.',
+      longDescription: 'Full-stack web platform and administrative portal built for Medina United MFC. Designed and integrated responsive user interfaces with backend REST APIs to power core financial service workflows, structured member account management, granular role-based admin access controls, and real-time operational reporting.',
+      highlights: [
+        'Financial Service Workflows & Member Account Management',
+        'Role-Based Admin Access Controls (RBAC)',
+        'Real-Time Operational Reporting & Monitoring',
+        'Responsive Frontend & Backend REST API Integrations'
+      ],
+      tech: ['Responsive UI', 'REST APIs', 'RBAC', 'Admin Portal', 'Operational Reporting'],
+      iconKey: 'finance',
+      featured: true
+    },
+    {
+      id: 'doc-institute',
+      title: 'DOC Institute',
+      subtitle: 'Full-Stack Educational & Training Portal',
+      category: 'fullstack',
+      categoryLabel: 'Educational & Training Portal',
+      description: 'Developed and maintained the institutional web portal, interactive course/program management dashboards, user registration workflows, database schemas, and ongoing content/system updates.',
+      longDescription: 'End-to-end educational and training portal engineered for DOC Institute. Built and maintained the public institutional portal alongside interactive course and program management dashboards, streamlined user registration workflows, structured database schemas, and continuous content and system updates.',
+      highlights: [
+        'Institutional Web Portal & Content Management',
+        'Interactive Course & Program Management Dashboards',
+        'Structured User Registration & Enrollment Workflows',
+        'Database Schema Design & Ongoing System Maintenance'
+      ],
+      tech: ['Full-Stack', 'Admin Dashboards', 'Database Schemas', 'Registration Flows', 'Web Portal'],
+      iconKey: 'education',
+      featured: true
+    },
+    {
+      id: 'etd-ifm-makerspace',
+      title: 'EtD-IF&M Makerspace',
+      subtitle: 'Co-funded by the European Union • Frontend & Portal Engineering',
+      category: 'frontend',
+      categoryLabel: 'EU Co-Funded Portal',
+      description: 'Built accessible, multi-device frontend modules and administrative tools supporting innovation program tracking, equipment/facility scheduling, stakeholder reporting, and user support.',
+      longDescription: 'Frontend and portal engineering for EtD-IF&M Makerspace (co-funded by the European Union). Delivered accessible, multi-device frontend modules and administrative tools supporting innovation program tracking, equipment and facility scheduling, stakeholder reporting, and responsive user support.',
+      highlights: [
+        'Accessible, Multi-Device Frontend Modules',
+        'Innovation Program Tracking & Administrative Tools',
+        'Equipment & Facility Scheduling Workflows',
+        'Stakeholder Reporting & User Support Systems'
+      ],
+      tech: ['Frontend Modules', 'Accessible UI', 'Facility Scheduling', 'Program Tracking', 'Stakeholder Reports'],
+      iconKey: 'makerspace',
+      featured: true
+    },
+    {
+      id: 'berzegi-charity',
+      title: 'Berzegi Charity Organization',
+      subtitle: 'Full-Stack Web Application & Beneficiary Management',
+      category: 'fullstack',
+      categoryLabel: 'Charity & Beneficiary Platform',
+      description: 'Designed and deployed a full-stack community and donor engagement platform featuring secure administrative controls, beneficiary/program data management, and automated content publishing.',
+      longDescription: 'Full-stack community and donor engagement platform designed and deployed for Berzegi Charity Organization. Combines public storytelling and donor outreach with secure administrative controls, structured beneficiary and program data management, and automated content publishing.',
+      highlights: [
+        'Community & Donor Engagement Platform',
+        'Secure Administrative Controls & Permissions',
+        'Beneficiary & Program Data Management',
+        'Automated Content Publishing Workflows'
+      ],
+      tech: ['Full-Stack Web', 'Admin Controls', 'Data Management', 'Auto Publishing', 'Donor Platform'],
+      iconKey: 'charity',
+      featured: true
+    },
+    {
+      id: 'etop-it-solutions',
+      title: 'Etop IT Solutions',
+      subtitle: 'Frontend Engineering, Testing & Deployment Support',
+      category: 'frontend',
+      categoryLabel: 'Frontend & Release Engineering',
+      description: 'Contributed modular UI components, responsive layouts, API integrations, and end-to-end debugging and performance optimization to ensure reliable production releases.',
+      longDescription: 'Frontend engineering, testing, and deployment support for Etop IT Solutions. Built reusable modular UI components and responsive layouts, implemented frontend-to-backend API integrations, and executed end-to-end debugging and performance optimization to safeguard reliable production releases.',
+      highlights: [
+        'Modular UI Components & Responsive Layouts',
+        'Frontend-to-Backend API Integrations',
+        'End-to-End Debugging & Issue Resolution',
+        'Performance Optimization & Production Release Support'
+      ],
+      tech: ['Modular UI', 'Responsive Layouts', 'API Integration', 'E2E Debugging', 'Performance Optimization'],
+      iconKey: 'engineering',
+      featured: true
+    },
     {
       id: 'amana-school',
       title: 'Amana School Management System',
@@ -830,15 +927,16 @@ export default function Home() {
               {/* Category Filter Pills */}
               <div className="flex flex-wrap justify-center gap-2 pt-6">
                 {[
-                  { id: 'all', label: 'All Projects (7)' },
+                  { id: 'all', label: `All Projects (${projects.length})` },
                   { id: 'fullstack', label: 'Full-Stack Systems' },
-                  { id: 'ecommerce', label: 'E-Commerce & Portals' },
+                  { id: 'frontend', label: 'Frontend & Portals' },
+                  { id: 'ecommerce', label: 'E-Commerce' },
                   { id: 'clone', label: 'Showcases & Media' },
                 ].map((filter) => (
                   <button
                     key={filter.id}
-                    onClick={() => setActiveProjectFilter(filter.id as any)}
-                    className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all ${
+                    onClick={() => setActiveProjectFilter(filter.id as 'all' | ProjectCategory)}
+                    className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       activeProjectFilter === filter.id
                         ? 'bg-black text-white dark:bg-white dark:text-black shadow-md'
                         : 'glass-panel text-[var(--text-muted)] hover:text-[var(--text-main)]'
@@ -852,22 +950,59 @@ export default function Home() {
 
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project) => {
+                const PreviewIcon =
+                  project.iconKey === 'finance' ? FaBuilding :
+                  project.iconKey === 'education' ? FaGraduationCap :
+                  project.iconKey === 'makerspace' ? FaLayerGroup :
+                  project.iconKey === 'charity' ? FaGlobe :
+                  FaLaptopCode;
+
+                return (
                 <div
                   key={project.id}
                   className="glass-card rounded-3xl overflow-hidden flex flex-col group transition-all duration-300"
                 >
-                  {/* Project Image Preview */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-neutral-900">
-                    <img
-                      src={project.img}
-                      alt={project.title}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-80" />
+                  {/* Project Image or Architectural Preview */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-neutral-950">
+                    {project.img ? (
+                      <>
+                        <img
+                          src={project.img}
+                          alt={project.title}
+                          className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent opacity-80" />
+                      </>
+                    ) : (
+                      <div className="w-full h-full relative flex flex-col justify-between p-5 bg-gradient-to-br from-neutral-900 via-neutral-950 to-black text-white">
+                        <div className="absolute inset-0 bg-dot-pattern opacity-35 pointer-events-none" />
+                        <div className="relative flex items-center justify-end gap-1.5 opacity-50">
+                          <span className="w-2 h-2 rounded-full bg-white/40" />
+                          <span className="w-2 h-2 rounded-full bg-white/60" />
+                          <span className="w-2 h-2 rounded-full bg-white/80" />
+                        </div>
+                        <div className="relative flex items-center gap-4 my-auto pt-4">
+                          <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                            <PreviewIcon className="w-6 h-6 text-white" />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 truncate">
+                              Production System
+                            </div>
+                            <div className="text-base font-bold text-white truncate">
+                              {project.title}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="relative h-1.5 w-full rounded-full bg-white/10 overflow-hidden">
+                          <div className="h-full w-2/3 bg-white/40 rounded-full group-hover:w-full transition-all duration-500" />
+                        </div>
+                      </div>
+                    )}
                     
                     {/* Badge */}
-                    <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2 pr-4">
                       <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-black text-white dark:bg-white dark:text-black shadow-md">
                         {project.categoryLabel}
                       </span>
@@ -890,9 +1025,16 @@ export default function Home() {
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
-                      <h3 className="text-xl font-bold">
-                        {project.title}
-                      </h3>
+                      <div>
+                        <h3 className="text-xl font-bold">
+                          {project.title}
+                        </h3>
+                        {project.subtitle && (
+                          <p className="text-[11px] font-mono text-[var(--text-dim)] mt-0.5">
+                            {project.subtitle}
+                          </p>
+                        )}
+                      </div>
                       <p className="text-[var(--text-muted)] text-xs sm:text-sm leading-relaxed line-clamp-3">
                         {project.description}
                       </p>
@@ -912,31 +1054,49 @@ export default function Home() {
                       </div>
 
                       {/* Action Links */}
-                      <div className="flex items-center justify-between pt-4 border-t border-black/10 dark:border-white/10">
-                        <a
-                          href={project.demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-bold bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-xl transition-all shadow-sm hover:opacity-85"
-                        >
-                          <FaExternalLinkAlt className="w-3 h-3" />
-                          <span>Live Demo</span>
-                        </a>
+                      <div className="flex items-center justify-between pt-4 border-t border-black/10 dark:border-white/10 gap-2">
+                        {project.demoLink ? (
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-xs font-bold bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-xl transition-all shadow-sm hover:opacity-85"
+                          >
+                            <FaExternalLinkAlt className="w-3 h-3" />
+                            <span>Live Demo</span>
+                          </a>
+                        ) : (
+                          <button
+                            onClick={() => setSelectedProject(project)}
+                            className="inline-flex items-center gap-2 text-xs font-bold bg-black text-white dark:bg-white dark:text-black px-4 py-2 rounded-xl transition-all shadow-sm hover:opacity-85 cursor-pointer"
+                          >
+                            <span>View Architecture</span>
+                            <FaArrowRight className="w-3 h-3" />
+                          </button>
+                        )}
 
-                        <a
-                          href={project.codeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
-                        >
-                          <FaGithub className="w-4 h-4" />
-                          <span>Code Repository</span>
-                        </a>
+                        {project.codeLink ? (
+                          <a
+                            href={project.codeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-xl hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                          >
+                            <FaGithub className="w-4 h-4" />
+                            <span>Code Repository</span>
+                          </a>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5 text-[11px] font-mono text-[var(--text-dim)] px-2.5 py-1.5 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+                            <FaLock className="w-3 h-3" />
+                            <span>Client System</span>
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
 
           </div>
@@ -1397,23 +1557,30 @@ export default function Home() {
             </button>
 
             {/* Header */}
-            <div className="space-y-2">
+            <div className="space-y-2 pr-10">
               <span className="px-3 py-1 rounded-full text-xs font-bold bg-black text-white dark:bg-white dark:text-black inline-block">
                 {selectedProject.categoryLabel}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold">
                 {selectedProject.title}
               </h3>
+              {selectedProject.subtitle && (
+                <p className="text-xs font-mono text-[var(--text-muted)]">
+                  {selectedProject.subtitle}
+                </p>
+              )}
             </div>
 
-            {/* Image Preview */}
-            <div className="h-56 sm:h-64 rounded-2xl overflow-hidden bg-neutral-900 border border-black/10 dark:border-white/10">
-              <img
-                src={selectedProject.img}
-                alt={selectedProject.title}
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+            {/* Image Preview (only when screenshot is available) */}
+            {selectedProject.img && (
+              <div className="h-56 sm:h-64 rounded-2xl overflow-hidden bg-neutral-900 border border-black/10 dark:border-white/10">
+                <img
+                  src={selectedProject.img}
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            )}
 
             {/* Long Description */}
             <div className="space-y-2">
@@ -1452,25 +1619,36 @@ export default function Home() {
             </div>
 
             {/* Actions */}
-            <div className="flex items-center justify-end gap-3 pt-4 border-t border-black/10 dark:border-white/10">
-              <a
-                href={selectedProject.codeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-xl glass-panel text-xs font-bold flex items-center gap-2 transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-              >
-                <FaGithub className="w-4 h-4" />
-                <span>View Source</span>
-              </a>
-              <a
-                href={selectedProject.demoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-bold flex items-center gap-2 shadow-md transition-opacity hover:opacity-85"
-              >
-                <FaExternalLinkAlt className="w-3 h-3" />
-                <span>Open Live Demo</span>
-              </a>
+            <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-black/10 dark:border-white/10">
+              {selectedProject.codeLink && (
+                <a
+                  href={selectedProject.codeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-xl glass-panel text-xs font-bold flex items-center gap-2 transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                >
+                  <FaGithub className="w-4 h-4" />
+                  <span>View Source</span>
+                </a>
+              )}
+              {selectedProject.demoLink ? (
+                <a
+                  href={selectedProject.demoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-bold flex items-center gap-2 shadow-md transition-opacity hover:opacity-85"
+                >
+                  <FaExternalLinkAlt className="w-3 h-3" />
+                  <span>Open Live Demo</span>
+                </a>
+              ) : (
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="px-5 py-2.5 rounded-xl bg-black text-white dark:bg-white dark:text-black text-xs font-bold flex items-center gap-2 shadow-md transition-opacity hover:opacity-85 cursor-pointer"
+                >
+                  <span>Close Overview</span>
+                </button>
+              )}
             </div>
 
           </div>
