@@ -82,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} bg-[#000000] text-emerald-50 antialiased font-sans`}
+        className={`${plusJakarta.variable} ${outfit.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
         {children}
       </body>
